@@ -9,14 +9,15 @@
                     <input type="text" class="form-control form-control-lg" id="item" required>
                     
                 </div>
+                <p>------{{ tst }}-----</p>
                 <div class="col-md-6 mb-3">
                     <label for="department">Select Department:</label>
                     <select class="custom-select custom-select-lg" id="department">
                         <option selected disabled value="">Choose...</option>
                         <option
                          v-for="dep in department" 
-                         :value="option"
-                           :key="dep.id"
+                         v-bind:key="dep.id"
+                         v-bind:value="dep.name"
                         >
                             {{dep.name}}
                         </option>
@@ -36,6 +37,7 @@
 export default {
     data: function(){
         return{
+            tst: "nadaaaaaaaaa",
             department: []
         }
     },
@@ -51,6 +53,7 @@ export default {
             axios.get('/api/department')
             .then((res) => {
                 this.department = res.data.data;
+                this.tst = "hahahahahahahahahha!!!!!!";
              //Vue.$set(this.department,res.data.data);
               //  this.u;
             })
