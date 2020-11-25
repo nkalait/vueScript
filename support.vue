@@ -15,7 +15,7 @@
                         <option selected disabled value="">Choose...</option>
                         <option
                          v-for="dep in department" 
-                         v-bind:key="dep.id" 
+                         :value="option"
                         >
                             {{dep.name}}
                         </option>
