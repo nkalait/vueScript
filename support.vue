@@ -15,7 +15,8 @@
                         <option selected disabled value="">Choose...</option>
                         <option
                          v-for="dep in department" 
-                         v-bind:key="dep.id" 
+                         :value="option"
+                           :key="dep.id"
                         >
                             {{dep.name}}
                         </option>
@@ -42,11 +43,16 @@ export default {
     mounted(){
         this.getDepartment();          
     },
-
+    updated(){
+        console.log(this.department);
+    },
     methods: {
         getDepartment(){
             axios.get('/api/department')
-            .then((res) => {this.department = res.data.data
+            .then((res) => {
+                this.department = res.data.data;
+             //Vue.$set(this.department,res.data.data);
+              //  this.u;
             })
             .catch((error) =>{
                 console.log(error)
